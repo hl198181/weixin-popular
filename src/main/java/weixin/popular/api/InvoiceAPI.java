@@ -7,7 +7,7 @@ import weixin.popular.bean.BaseResult;
 import weixin.popular.bean.invoice.*;
 import weixin.popular.client.LocalHttpClient;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class InvoiceAPI extends BaseAPI {
     public static InvoiceResult getInvoice(String access_token, String cardId, String encryptCode) {
@@ -16,7 +16,7 @@ public class InvoiceAPI extends BaseAPI {
                 .setHeader(jsonHeader)
                 .setUri(BASE_URI + "/card/invoice/reimburse/getinvoiceinfo")
                 .addParameter(PARAM_ACCESS_TOKEN, API.accessToken(access_token))
-                .setEntity(new StringEntity(json, Charset.forName("utf-8")))
+                .setEntity(new StringEntity(json, StandardCharsets.UTF_8))
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, InvoiceResult.class);
     }
@@ -27,7 +27,7 @@ public class InvoiceAPI extends BaseAPI {
                 .setHeader(jsonHeader)
                 .setUri(BASE_URI + "/card/invoice/reimburse/getinvoicebatch")
                 .addParameter(PARAM_ACCESS_TOKEN, API.accessToken(access_token))
-                .setEntity(new StringEntity(json, Charset.forName("utf-8")))
+                .setEntity(new StringEntity(json, StandardCharsets.UTF_8))
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, InvoiceListResult.class);
     }
@@ -38,7 +38,7 @@ public class InvoiceAPI extends BaseAPI {
                 .setHeader(jsonHeader)
                 .setUri(BASE_URI + "/card/invoice/reimburse/updateinvoicestatus")
                 .addParameter(PARAM_ACCESS_TOKEN, API.accessToken(access_token))
-                .setEntity(new StringEntity(json, Charset.forName("utf-8")))
+                .setEntity(new StringEntity(json, StandardCharsets.UTF_8))
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, BaseResult.class);
     }
@@ -51,7 +51,7 @@ public class InvoiceAPI extends BaseAPI {
                 .setHeader(jsonHeader)
                 .setUri(BASE_URI + "/card/invoice/reimburse/updatestatusbatch")
                 .addParameter(PARAM_ACCESS_TOKEN, API.accessToken(access_token))
-                .setEntity(new StringEntity(json, Charset.forName("utf-8")))
+                .setEntity(new StringEntity(json, StandardCharsets.UTF_8))
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, BaseResult.class);
     }
